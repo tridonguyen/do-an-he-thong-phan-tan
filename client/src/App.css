@@ -1,7 +1,10 @@
 .App {
   text-align: center;
 }
-
+.showNotification {
+  filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.08);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +38,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+h1 {
+  margin: 0;
 }
