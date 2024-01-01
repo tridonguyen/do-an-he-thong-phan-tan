@@ -27,7 +27,7 @@ function App() {
     setViewMode(e.target.innerHTML);
   };
   useEffect(() => {
-    socket.current = io("http://192.168.1.4:5000", {});
+    socket.current = io("http://192.168.2.194:5000", {});
     // Xử lý sự kiện khi kết nối thành công
     socket.current.on("connect", () => {
       console.log("Connected to server");
@@ -79,11 +79,20 @@ function App() {
         let temp = [];
         for (let key in data) {
           let subObject = data[key];
+          subObject.id = key
           console.log(subObject);
           temp = [...temp, subObject];
         }
+        console.log(temp)
         setListUser(temp);
       });
+
+      socket.current.on("another-left", (user_id) => {
+        setListUser(old => {
+          const new_data  = old?.filter(item => item.id != user_id)
+          return new_data
+        })
+      })
     }
   }, [join]);
 

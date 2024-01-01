@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
   socket.emit("return_id_connect", socket.id);
   socket.on("disconnect", () => {
     console.log("user disconnected");
-    io.emit("another-left", user[`${id}`].name);
+    io.emit("another-left", id);
     delete user[`${id}`];
 
     if (user == {}) {
